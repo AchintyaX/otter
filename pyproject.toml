@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "otter"
+version = "0.1.0"
+description = "A toolkit for implementing weakly supervised classification on text data"
+authors = ["Achintya Shankhdhar <achintya.shankhdhar@simpplr.com>"]
+license = "along with new label di"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+transformers = "^4.23.1"
+pandas = "^1.5.1"
+loguru = "^0.6.0"
+torch = "^1.12.1"
+numpy = "^1.23.4"
+sentence-transformers = "^2.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
