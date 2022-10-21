@@ -1,3 +1,3 @@
 # Otter 
 
-[otter](https://github.com/AchintyaX/otter/blob/master/assets/otter-cartoon-illustration-animal.webp)
+[otter](cute-otter-cartoon-illustration-animal-nature-concept-isolated-flat-cartoon-style_138676-3414.jpg)
