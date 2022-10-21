@@ -93,7 +93,7 @@ class semantic_matching:
         }
 
         return response_dict
-    
+
     def predict_df(self, df: pd.DataFrame, text_column: str):
         copy_df = df.copy(deep=True)
         logger.info(f"getting predictions from {text_column} column ")
@@ -105,24 +105,28 @@ class semantic_matching:
             top_labels.append(result["top_label"])
             top_label_scores.append(result["top_label_score"])
             labels_metadata.append(result["labels_metadata"])
-        
+
         copy_df["semantic_label"] = top_labels
         copy_df["semantic_score"] = top_label_scores
         copy_df["semantic_metadata"] = labels_metadata
 
         return copy_df
-    
+
     def intersection_score(self, df: pd.DataFrame, label_column: str, text_column: str):
 
         output_df = self.predict_df(df=df, text_column=text_column)
-        score = intersection_score(df=output_df, prediction_column="semantic_label", target_column=label_column)
+        score = intersection_score(
+            df=output_df, prediction_column="semantic_label", target_column=label_column
+        )
         return score
-    
-    def classification_report(self, df: pd.DataFrame, label_column: str, text_column: str):
+
+    def classification_report(
+        self, df: pd.DataFrame, label_column: str, text_column: str
+    ):
 
         output_df = self.predict_df(df=df, text_column=text_column)
-        report = get_classification_report(df=output_df, prediction_column="semantic_label", target_column=label_column)
+        report = get_classification_report(
+            df=output_df, prediction_column="semantic_label", target_column=label_column
+        )
 
-        return report 
-
-
+        return report
