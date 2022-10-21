@@ -1,6 +1,3 @@
-import os
-from typing_extensions import Self
-from urllib import response
 import pandas as pd
 import numpy as np
 import re
@@ -82,10 +79,12 @@ class semantic_matching:
 
         return result, str(score), labels_metadata
 
-    def predict(self, query: str) -> Dict[Any, Any]:
+    def predict(self, query: str, rank_list_size: int = 5) -> Dict[Any, Any]:
         query = self.text_cleaning(query)
 
-        top_label, top_label_score, labels_metadata = self.search_rank(query=query)
+        top_label, top_label_score, labels_metadata = self.search_rank(
+            query=query, rank_list_size=rank_list_size
+        )
         response_dict = {
             "top_label": top_label,
             "top_label_score": top_label_score,
@@ -94,14 +93,14 @@ class semantic_matching:
 
         return response_dict
 
-    def predict_df(self, df: pd.DataFrame, text_column: str):
+    def predict_df(self, df: pd.DataFrame, text_column: str, rank_list_size: int = 5):
         copy_df = df.copy(deep=True)
         logger.info(f"getting predictions from {text_column} column ")
         top_labels = []
         top_label_scores = []
         labels_metadata = []
         for text in tqdm(copy_df[text_column]):
-            result = self.predict(text)
+            result = self.predict(text, rank_list_size=rank_list_size)
             top_labels.append(result["top_label"])
             top_label_scores.append(result["top_label_score"])
             labels_metadata.append(result["labels_metadata"])
