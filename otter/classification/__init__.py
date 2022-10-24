@@ -1,3 +1,3 @@
-from otter.classification import semantic_matching
-from otter.classification import zeroshot
-from otter.classification import fuzzy_similarity
+from otter.classification.semantic_matching import semantic_matching
+from otter.classification.zeroshot import zeroshot_classifier
+from otter.classification.fuzzy_similarity import fuzzy_classifierß

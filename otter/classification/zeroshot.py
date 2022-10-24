@@ -9,7 +9,7 @@ from typing import Dict, Any
 from otter.metrics import intersection_score, get_classification_report
 
 
-class zeroshot:
+class zeroshot_classifier:
     """
     Zeroshot classification using hugging face models
     """
