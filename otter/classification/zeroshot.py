@@ -46,7 +46,7 @@ class zeroshot_classifier:
             }
         prediction = self.classifier(text, candidate_labels)
         labels_metadata = []
-        for i in range(len(prediction["labels"]), 3):
+        for i in range(3):
             metadata = {
                 "label_name": inv_map[prediction["labels"][i]],
                 "score": prediction["scores"][i],
